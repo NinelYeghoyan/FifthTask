@@ -1,0 +1,38 @@
+﻿<section class="signUp wrapper">
+    <h2 class="signUp__title">Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="signUp__row">
+            <label for="email" class="signUp__label">E-mail</label>
+            <input type="email" class="signUp__input" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+            <div *ngIf="email.errors && (email.dirty || email.touched)">
+                <div [hidden]="!email.errors.required" class="signUp__required">
+                    This field is required!
+                </div>
+                <div [hidden]="!email.errors.pattern" class="signUp__required">
+                    Please input a valid email.
+                </div>
+            </div>
+        </div>
+        <div class="signUp__row">
+            <label for="password" class="signUp__label">Password</label>
+            <input type="password" id="password" class="signUp__input" required minlength="8" [(ngModel)]="model.password" name="password" #password="ngModel" pattern="[a-zA-Z0-9]+"/>
+            <div *ngIf="password.errors && (password.dirty || password.touched)">
+                <div [hidden]="!password.errors.required" class="signUp__required">
+                    This field is required!
+                </div>
+                <div [hidden]="!password.errors.minlength" class="signUp__required">
+                    Must be at least 8 characters.
+                </div>
+                <div [hidden]="!password.errors.pattern" class="signUp__required">
+                    Must be alphanumeric
+                </div>
+            </div>
+        </div>
+        <div class="signUp__row--button">
+            <button [disabled]="loading" class="signUp__button">Log in</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a [routerLink]="['/register']" class="signUp__link">Register</a>
+        </div>
+    </form>
+</section>
+

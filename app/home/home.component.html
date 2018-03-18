@@ -1,0 +1,10 @@
+﻿<div class="wrapper">
+    <h1 class="enter__title">Hi {{currentUser.firstName}}!</h1>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.email}} ({{user.firstName}} {{user.lastName}})
+            <a (click)="deleteUser(user.id)" class="enter__delete">Delete</a>
+        </li>
+    </ul>
+    <a [routerLink]="['/login']" class="enter__button">Log out</a>
+</div>
